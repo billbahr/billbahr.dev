@@ -1,2 +1,2 @@
 # billbahr.dev
-billbahr.dev website
+Personal website and blog
