@@ -20,17 +20,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 2.6
-        bundler-cache: true
-    - name: Install dependencies
-      run: bundle
-    - name: "Build Site"
-      run: bundle exec jekyll build
-      env:
-        JEKYLL_ENV: production
+    # skip - name: Set up Ruby
+    # skip  uses: ruby/setup-ruby@v1
+    # skip  with:
+    # skip    ruby-version: 2.6
+    # skip    bundler-cache: true
+    # skip- name: Install dependencies
+    # skip  run: bundle
+    # skip- name: "Build Site"
+    # skip  run: bundle exec jekyll build
+    # skip  env:
+    # skip    JEKYLL_ENV: production
     - name: "Deploy to AWS S3"
       run: aws s3 sync ./_site/ s3://${{ secrets.AWS_S3_BUCKET_NAME }} --acl public-read --delete --cache-control max-age=604800
     - name: "Create AWS Cloudfront Invalidation"
